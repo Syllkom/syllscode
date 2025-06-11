@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
-    --foreground: 0 0% 98%;
+    --background: 222 47% 11%; /* #0F172A */
+    --foreground: 0 0% 98%; /* White-ish text */
 
-    --card: 220 44% 14%;
+    --card: 220 44% 14%; /* #152032 */
     --card-foreground: 0 0% 98%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222 47% 11%; /* Dark background for popovers */
+    --popover-foreground: 0 0% 98%; /* Light text for popovers */
 
-    --primary: 239 89% 68%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 239 89% 68%; /* #6366F5 */
+    --primary-foreground: 0 0% 98%; /* White text on primary */
 
-    --secondary: 220 30% 25%;
+    --secondary: 220 30% 25%; /* A general secondary dark shade */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 227 7% 35%;
-    --muted-foreground: 227 7% 54%;
+    --muted: 227 7% 35%; /* Muted background elements */
+    --muted-foreground: 227 7% 54%; /* #828694 for description texts */
 
-    --accent: 230 40% 31%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 230 40% 31%; /* #2D3670 for SVG icon container background */
+    --accent-foreground: 0 0% 98%; /* Text on accent */
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 72% 51%; /* Standard red for dark themes */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 30% 18%;
-    --input: 220 30% 22%;
-    --ring: 239 89% 72%;
+    --border: 220 30% 18%; /* #21293C */
+    --input: 220 30% 22%; /* Slightly lighter than border for input fields */
+    --ring: 239 89% 72%; /* Lighter primary for focus rings */
 
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -42,22 +42,22 @@
     --radius: 0.5rem;
   }
 
-  * {
-    border-color: hsl(var(--border));
+  html {
+    scroll-behavior: smooth;
   }
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
-  html {
-    scroll-behavior: smooth;
+  * {
+    border-color: hsl(var(--border));
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(20px); /* Increased from 15px */
   }
   to {
     opacity: 1;
@@ -66,7 +66,7 @@
 }
 
 .card-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards; /* Increased duration from 0.4s */
 }
 
 @keyframes subtleBackgroundShift {
@@ -76,11 +76,21 @@
 }
 
 .animate-subtle-bg {
-  background-size: 200% 200%;
+  background-size: 200% 200%; /* Ensure the gradient is large enough to move */
   animation: subtleBackgroundShift 25s ease infinite;
 }
 
+/* Animated gradient border for Developers card - giữ lại lớp cơ bản cho layout */
+.dev-card-animated-border {
+  position: relative;
+  padding: 1px; 
+  border-radius: 0.75rem; /* rounded-xl */
+  background: hsl(var(--border)); /* Default static border color */
+  transition: background 0.3s ease-in-out;
+}
 
+/* Loại bỏ @property và animation phức tạp có thể gây lỗi build */
+/*
 @property --gradient-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -96,15 +106,6 @@
   }
 }
 
-.dev-card-animated-border {
-  position: relative;
-  padding: 1px;
-  border-radius: 0.75rem;
-  background: hsl(var(--border));
-
-  transition: background 0.3s ease-in-out;
-}
-
 .dev-card-animated-border:hover,
 .dev-card-animated-border:focus-within {
   background: conic-gradient(
@@ -115,7 +116,9 @@
   );
   animation: spin-dev-card-border 3s linear infinite running;
 }
+*/
 
+/* Hide the default close button rendered by shadcn SheetContent */
 .main-sheet-content > button.absolute.right-4.top-4 {
   display: none !important;
 }
