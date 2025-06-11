@@ -1,0 +1,122 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 44% 14%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 239 89% 68%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 30% 25%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 227 7% 35%;
+    --muted-foreground: 227 7% 54%;
+
+    --accent: 230 40% 31%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 30% 18%;
+    --input: 220 30% 22%;
+    --ring: 239 89% 72%;
+
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --radius: 0.5rem;
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes subtleBackgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-subtle-bg {
+  background-size: 200% 200%;
+  animation: subtleBackgroundShift 25s ease infinite;
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-dev-card-border {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.dev-card-animated-border {
+  position: relative;
+  padding: 1px;
+  border-radius: 0.75rem;
+  background: hsl(var(--border));
+
+  transition: background 0.3s ease-in-out;
+}
+
+.dev-card-animated-border:hover,
+.dev-card-animated-border:focus-within {
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #DD9EDD,
+    #8D8AFF,
+    #DD9EDD
+  );
+  animation: spin-dev-card-border 3s linear infinite running;
+}
+
+.main-sheet-content > button.absolute.right-4.top-4 {
+  display: none !important;
+}
