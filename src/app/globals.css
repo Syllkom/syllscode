@@ -42,11 +42,8 @@
     --radius: 0.5rem;
   }
 
-}
-
-@layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
     @apply bg-background text-foreground;
