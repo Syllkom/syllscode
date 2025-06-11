@@ -46,7 +46,8 @@
     border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
   html {
     scroll-behavior: smooth;
@@ -78,6 +79,7 @@
   background-size: 200% 200%;
   animation: subtleBackgroundShift 25s ease infinite;
 }
+
 
 @property --gradient-angle {
   syntax: '<angle>';
